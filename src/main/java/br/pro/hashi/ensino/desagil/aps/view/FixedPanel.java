@@ -12,7 +12,7 @@ import java.awt.*;
 public class FixedPanel extends JPanel {
 
     // O construtor recebe a largura e a altura do painel.
-    protected FixedPanel(int width, int height) {
+    protected FixedPanel(int height) {
 
         // É muito importante estabelecer que esse painel
         // não tem layout, pois caso contrário seu tamanho
@@ -20,7 +20,7 @@ public class FixedPanel extends JPanel {
         setLayout(null);
 
         // Usamos esse método nos Desafios, vocês lembram?
-        setPreferredSize(new Dimension(width, height));
+        setPreferredSize(new Dimension(140, height)); //Deixei esse warning pois aparentemente o programa tende a modificar esses parâmetros diretamente pela classe GateView
     }
 
     // Sobrecarga do método add que permite definir posição
@@ -28,7 +28,7 @@ public class FixedPanel extends JPanel {
     // Fixar posição e tamanho também não é uma boa prática,
     // pois o normal é deixar o layout decidir. Novamente,
     // escolhemos fazer isso aqui para priorizar simplicidade.
-    protected Component add(Component comp, int x, int y, int width, int height) {
+    protected void add(Component comp, int x, int y, int width, int height) {
 
         // Usa a implementação original para adicionar.
         super.add(comp);
@@ -36,6 +36,6 @@ public class FixedPanel extends JPanel {
         // Redefine posição e tamanho da componente.
         comp.setBounds(x, y, width, height);
 
-        return comp;
+
     }
 }
